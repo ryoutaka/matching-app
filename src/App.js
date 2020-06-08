@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
+
 //d
 function App() {
   const [text, setText] = useState("");
+  // console.log(process);
   useEffect(() => {
-    axios.get("http://localhost:4000/api").then((res) => {
+    axios.get(`/api`).then((res) => {
       console.log(res.data);
     });
   }, []);
