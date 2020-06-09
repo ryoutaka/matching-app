@@ -51,6 +51,7 @@ const User_register = () => {
             const email = emailInput.current.querySelector("input").value;
             const password = passwordInput.current.querySelector("input").value;
 
+            history.push("/job");
             if (getUser(user_name, email, password)) {
               history.push("/job");
             } else {
