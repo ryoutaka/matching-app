@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const User_register = () => {
+  const err = useSelector((store) => store.err_msg);
+  const dispatch = useDispatch();
+  console.log(err);
   const classes = useStyles();
   const nameInput = useRef(null);
   const emailInput = useRef(null);
@@ -49,6 +52,7 @@ const User_register = () => {
             const password = passwordInput.current.querySelector("input").value;
 
             getUser(user_name, email, password);
+            dispatch({ type: "not_found_user" });
           }}
         >
           SEND

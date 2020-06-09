@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 //ssssss
 export const getUser = (user_name, email, password) => {
   axios
@@ -8,6 +9,9 @@ export const getUser = (user_name, email, password) => {
       password,
     })
     .then((res) => {
-      console.log(res.data);
+      console.log(res.data.length);
+      if (res.data.length) {
+        window.location = "/job";
+      }
     });
 };

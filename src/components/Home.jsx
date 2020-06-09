@@ -5,13 +5,13 @@ const Home = () => {
   return (
     <>
       <div>
-        <Link to="/dancer">
+        <Link style={{ textDecoration: "none" }} to="/dancer">
           <Button variant="contained" color="primary">
             ダンサーの方はこちらへ
           </Button>
         </Link>
 
-        <Link to="/school">
+        <Link style={{ textDecoration: "none" }} to="/school">
           <Button variant="contained" color="primary">
             お教室の経営者の方はこちらへ
           </Button>

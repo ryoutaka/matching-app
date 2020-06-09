@@ -31,8 +31,7 @@ app.post("/userLogin", (req, res) => {
       password,
     })
     .then((result) => {
-      console.log(result);
-      res.send("there is user");
+      res.send(result);
     })
     .catch((result) => {
       console.log("error");
