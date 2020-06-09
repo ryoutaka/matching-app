@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { getUser } from "../functions/index";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,14 +51,30 @@ const User_register = () => {
             const user_name = nameInput.current.querySelector("input").value;
             const email = emailInput.current.querySelector("input").value;
             const password = passwordInput.current.querySelector("input").value;
+            axios
+              .post("/userLogin", {
+                user_name,
+                email,
+                password,
+              })
+              .then((res) => {
+                console.log(res.data.length);
+                if (res.data.length) {
+                  history.push("/job");
+                  return true;
+                } else {
+                  console.log("kkk");
+                  return false;
+                }
+              });
 
-            history.push("/job");
-            if (getUser(user_name, email, password)) {
-              history.push("/job");
-            } else {
-              dispatch({ type: "not_found_user" });
-            }
-            console.log("ii");
+            //
+            // if (getUser(user_name, email, password)) {
+            //   history.push("/job");
+            // } else {
+            //   dispatch({ type: "not_found_user" });
+            // }
+            // console.log("ii");
           }}
         >
           SEND
