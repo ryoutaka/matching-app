@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import { getQueriesForElement } from "@testing-library/react";
 import { getUser } from "../functions/index";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const User_register = () => {
   const err = useSelector((store) => store.err_msg);
   const dispatch = useDispatch();
-  console.log(err);
+  const history = useHistory();
   const classes = useStyles();
   const nameInput = useRef(null);
   const emailInput = useRef(null);
@@ -51,8 +51,12 @@ const User_register = () => {
             const email = emailInput.current.querySelector("input").value;
             const password = passwordInput.current.querySelector("input").value;
 
-            getUser(user_name, email, password);
-            dispatch({ type: "not_found_user" });
+            if (getUser(user_name, email, password)) {
+              history.push("/job");
+            } else {
+              dispatch({ type: "not_found_user" });
+            }
+            console.log("ii");
           }}
         >
           SEND
