@@ -11,8 +11,7 @@ export const getUser = (user_name, email, password) => {
     .then((res) => {
       console.log(res.data.length);
       if (res.data.length) {
-        window.location.href = "/job";
-
+        window.location = "/job";
         return true;
       } else {
         return false;
