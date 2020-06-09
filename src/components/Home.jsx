@@ -5,14 +5,17 @@ const Home = () => {
   return (
     <>
       <div>
-        <Button variant="contained" color="primary">
-          ダンサーの方はこちらへ
-          <Link to="/dancer">danserの方はこちらへ</Link>
-        </Button>
-        <Button variant="contained" color="primary" href="/school">
-          お教室経営者の方はこちらへ
-          {/* <Link to="/school">お教室の経営者の方はこちらへ</Link> */}
-        </Button>
+        <Link to="/dancer">
+          <Button variant="contained" color="primary">
+            ダンサーの方はこちらへ
+          </Button>
+        </Link>
+
+        <Link to="/school">
+          <Button variant="contained" color="primary">
+            お教室の経営者の方はこちらへ
+          </Button>
+        </Link>
       </div>
     </>
   );
