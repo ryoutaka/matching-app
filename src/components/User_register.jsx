@@ -32,56 +32,67 @@ const User_register = () => {
   const passwordInput = useRef(null);
   return (
     <>
-      ログインしてください
-      <form className={classes.root} noValidate autoComplete="off">
-        <div>
-          <TextField ref={nameInput} id="standard-basic" label="Name" />
-        </div>
-        <div>
-          <TextField ref={emailInput} id="standard-basic" label="emailInput" />
-        </div>
-        <div>
-          <TextField ref={passwordInput} id="standard-basic" label="password" />
-        </div>
+      <div className="register--container border">
+        <h2 style={{ marginBottom: 40 }}>ログインをしてください</h2>
+        <form className={classes.root} noValidate autoComplete="off">
+          <div className="register--item">
+            <TextField
+              style={{ minWidth: 300 }}
+              ref={nameInput}
+              id="standard-basic"
+              label="Name"
+            />
+          </div>
+          <div className="register--item">
+            <TextField
+              style={{ minWidth: 300 }}
+              ref={emailInput}
+              id="standard-basic"
+              label="emailInput"
+            />
+          </div>
+          <div className="register--item">
+            <TextField
+              style={{ minWidth: 300 }}
+              ref={passwordInput}
+              id="standard-basic"
+              label="password"
+            />
+          </div>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            const user_name = nameInput.current.querySelector("input").value;
-            const email = emailInput.current.querySelector("input").value;
-            const password = passwordInput.current.querySelector("input").value;
-            axios
-              .post("/userLogin", {
-                user_name,
-                email,
-                password,
-              })
-              .then((res) => {
-                console.log(res.data.length);
-                if (res.data.length) {
-                  history.push("/job");
-                  return true;
-                } else {
-                  console.log("kkk");
-                  return false;
-                }
-              });
-
-            //
-            // if (getUser(user_name, email, password)) {
-            //   history.push("/job");
-            // } else {
-            //   dispatch({ type: "not_found_user" });
-            // }
-            // console.log("ii");
-          }}
-        >
-          SEND
-        </Button>
-
-        <div className={classes.root}></div>
-      </form>
+          <div className="register--item">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                const user_name = nameInput.current.querySelector("input")
+                  .value;
+                const email = emailInput.current.querySelector("input").value;
+                const password = passwordInput.current.querySelector("input")
+                  .value;
+                axios
+                  .post("/userLogin", {
+                    user_name,
+                    email,
+                    password,
+                  })
+                  .then((res) => {
+                    console.log(res.data.length);
+                    if (res.data.length) {
+                      history.push("/job");
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  });
+              }}
+            >
+              SEND
+            </Button>
+          </div>
+          <div className={classes.root}></div>
+        </form>
+      </div>
     </>
   );
 };

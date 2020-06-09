@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 
 const School = () => {
-  return <>adfasdfad</>;
+  return <>dfas</>;
 };
 
 export default School;
