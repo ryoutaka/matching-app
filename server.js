@@ -19,6 +19,25 @@ app.use("/api", (req, res) => {
     .from("users")
     .then((result) => res.send(result));
 });
+
+app.post("/userLogin", (req, res) => {
+  const { user_name, email, password } = req.body;
+  console.log(req.body);
+  db.select(`*`)
+    .from("users")
+    .where({
+      user_name,
+      email,
+      password,
+    })
+    .then((result) => {
+      res.send("there is user");
+    })
+    .catch((result) => {
+      res.send("not find user");
+    });
+});
+
 const port = process.env.PORT || 4000;
 var server = http.createServer(app);
 
