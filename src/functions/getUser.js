@@ -1,4 +1,5 @@
 import axios from "axios";
+//ssssss
 export const getUser = (user_name, email, password) => {
   axios
     .post("/userLogin", {
@@ -7,6 +8,6 @@ export const getUser = (user_name, email, password) => {
       password,
     })
     .then((res) => {
-      console.log(res);
+      console.log(res.data);
     });
 };
