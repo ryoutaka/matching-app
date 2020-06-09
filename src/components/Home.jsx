@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <>
       <div>
-        <Button variant="contained" color="primary" href="/dancer">
+        <Button variant="contained" color="primary">
           ダンサーの方はこちらへ
-          {/* <Link to="/dancer">danserの方はこちらへ</Link> */}
+          <Link to="/dancer">danserの方はこちらへ</Link>
         </Button>
         <Button variant="contained" color="primary" href="/school">
           お教室経営者の方はこちらへ
