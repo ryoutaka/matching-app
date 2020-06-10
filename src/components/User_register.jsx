@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import { getUser } from "../functions/index";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,17 +22,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const User_register = () => {
-  const err = useSelector((store) => store.err_msg);
+  const msg = useSelector((store) => store.register_msg);
+  const color_msg = useSelector((store) => store.color_msg);
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
   const nameInput = useRef(null);
   const emailInput = useRef(null);
   const passwordInput = useRef(null);
+  console.log(color_msg);
   return (
     <>
       <div className="register--container border">
-        <h2 style={{ marginBottom: 40 }}>ログインをしてください</h2>
+        <h2 style={{ marginBottom: 40, color: color_msg }}>{msg}</h2>
         <form className={classes.root} noValidate autoComplete="off">
           <div className="register--item">
             <TextField
@@ -77,12 +78,10 @@ const User_register = () => {
                     password,
                   })
                   .then((res) => {
-                    console.log(res.data.length);
                     if (res.data.length) {
                       history.push("/job");
-                      return true;
                     } else {
-                      return false;
+                      dispatch({ type: "not_found_user" });
                     }
                   });
               }}
